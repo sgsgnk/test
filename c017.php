@@ -1,19 +1,34 @@
 <?php
-    $par = fgets(STDIN); //親の数字
-    $num = fgets(STDIN); //子の数
-    for($i = 0; $i <$num; $i++){
+    //C017 ハイアンドロー
+    //全パス済みです
+
+    $par = fgets(STDIN);    //親の数字
+    $parSep = explode(' ', $par);
+    $childNum = fgets(STDIN); //子の数
+    //子の数分繰り返す
+    for($i = 0; $i < $childNum; $i++){
+        //子の数字を配列に入れる
         $child[] = fgets(STDIN);
-        //空白で分ける
-        $childnum = explode(" ",$child[$i]);
-        $count = count($child);
-        //var_dump($childnum);
-        for($j = 0; $j < $i; $j++){
-            for($k = 0; $k < $j; $k++){
-                print $childnum[$j][$k];
+        //var_dump($child);
+        //スペースで区切る
+        $childSep = explode(" ", $child[$i]);
+        //var_dump($childSep);
+        for($j = 0; $j < 1; $j++){
+            //print $childSep[$j];
+            //print $parSep[$j];
+            if($childSep[$j] < $parSep[$j]){
+                echo "High\n";
+
+            }elseif ($childSep[$j] == $parSep[$j] ) {
+                $j = 1;
+                if ($childSep[$j] > $parSep[$j]) {
+                    echo "High\n";
+                }else{
+                    echo "Low\n";
+                }
+            }else{
+                echo "Low\n";
             }
         }
     }
-    
-    
- //まだ途中なのでテストに通していません。   
 ?>
