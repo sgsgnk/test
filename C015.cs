@@ -1,33 +1,41 @@
+using System;
 public class Hello{
     public static void Main(){
         // 自分の得意な言語で
         // Let's チャレンジ！！
-        string n = System.Console.ReadLine();//番号
-        string r1 = System.Console.ReadLine();//部屋の総数
-        int r2 = int.Parse(r1);  
-        int counter = 0;
-        int total = 0;
-            
-            do
-            {
-                counter += 1;
-                string rNum = System.Console.ReadLine(); 
-                if(0 <= rNum.IndexOf(n))
-                {
-                    //System.Console.WriteLine("");
-                }
-                else
-                {
-                    System.Console.WriteLine(rNum);
-                    total += 1;
-                }
-            }
-            while(counter < r2);
+        var n = System.Console.ReadLine();
+        int r = int.Parse(n);
         
-        if(total == 0)
+        int counter;
+        double point = 0;
+        
+        double p = 0;
+        double total = 0;
+        
+        for(counter=0; counter<r; counter++)
         {
-            System.Console.WriteLine("none");
+            var dataVar = System.Console.ReadLine();
+            string[] dataStr = dataVar.Split(new char[]{' '});
+            double price = double.Parse(dataStr[1]);
+            
+            if(0 <= dataStr[0].IndexOf("3"))
+            {
+                point = price * 0.03;
+            }
+            else if(0 <= dataStr[0].IndexOf("5"))
+            {
+                point = price * 0.05;
+            }
+            else
+            {
+                point = price * 0.01;
+            }
+            p = Math.Floor(point);
+            total += p;
         }
+        
+        System.Console.WriteLine(total);
     }
 }
-//全パスできました。
+
+//全パスできました
